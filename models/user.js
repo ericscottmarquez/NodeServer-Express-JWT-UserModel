@@ -15,7 +15,6 @@ const userSchema = new Schema({
 //-------------------------------------------------------------------
 // on save hook, encrypt the password
 // before saving a model, this function runs
-
 userSchema.pre('save', function(next) {
   const user = this;
     // generate a salt
@@ -30,8 +29,17 @@ userSchema.pre('save', function(next) {
     });
   });
 });
-
 //--------------------------------------------------------------------
+//this next feature uses bcrypt to do what is described in passport.js
+userSchema.methods.comparePassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) { return callback(err); }
+
+    callback(null, isMatch);
+
+  });
+}
+
 
 //  create the model class
 const ModelClass = mongoose.model('user', userSchema);

@@ -5,7 +5,7 @@ const passport = require('passport');
 
 //interceptor middleware
 const requireAuth = passport.authenticate('jwt', { session: false });
-
+const requireSignin = passport.authenticate('local', { session: false });
 
 
 module.exports = function(app) {
@@ -13,7 +13,9 @@ module.exports = function(app) {
     res.send({ hi: 'there' });
 
   });
-  
+
+//protected routes are signin,
+  app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
 
 
