@@ -1,5 +1,6 @@
 # NodeServer-Express-JWT-UserModel
 node server backend for "integration-unit-testing"
+This project authenticates a users login model with a JSON web token and hides a special feature when not logged in. 
 
 "npm run dev" to start
 starts on localhost:3090
