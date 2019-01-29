@@ -1,4 +1,6 @@
 # NodeServer-Express-JWT-UserModel
+BOILERPLATE
+
 node server backend
 This project authenticates a users login model with a JSON web token and hides a special feature when not logged in. 
 
